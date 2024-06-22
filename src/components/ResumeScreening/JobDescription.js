@@ -11,7 +11,7 @@ export const JobDescription=()=>{
                     <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(true)}}>upload job description</div>
                 </>}
                 {isUploadOptionActivate&&<> 
-                <label for='job-description-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><p>Upload or Drop Job Description</p><p>as .pdf or .docx file</p> </label>
+                <label for='job-description-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Job Description</span><span>as .pdf or .docx file</span> </label>
                 <input id='job-description-input' type='file' className="hidden"></input>
                 <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past job description</div>
                 </>}

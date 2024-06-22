@@ -10,7 +10,7 @@ export const ResumeUploading=()=>{
                     <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(true)}}>upload resume</div>
                 </>}
                 {isUploadOptionActivate&&<> 
-                <label for='resume-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><p>Upload or Drop Resume</p><p>as .pdf or .docx file</p> </label>
+                <label for='resume-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Resume</span><span>as .pdf or .docx file</span> </label>
                 <input id='resume-input' type='file' className="hidden"></input>
                 <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past resume</div>
                 </>}
