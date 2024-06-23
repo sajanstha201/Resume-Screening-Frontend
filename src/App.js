@@ -4,8 +4,8 @@ import { ResumeScreening } from './webpage';
 
 function App() {
   return (
-    <div>
-        <div id="alert-container"></div>
+    <div className='relative'>
+        <div id="alert-container" className='fixed top-[20px] right-[20px] z-1000'></div>
         <div className='blur-box' id='blur-box'>
           <div className='loader-box' id='loader-box'></div>      
         </div>

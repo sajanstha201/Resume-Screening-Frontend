@@ -3,7 +3,7 @@ import mammoth from "mammoth"
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-
+import {ShowAlert,ActivateLoader} from '../AlertLoader/index'
 GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 
@@ -25,9 +25,8 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                     setResumeDetail(prevData=>({...prevData,['Resume No'+formattedDateTime]:resumeText}))
                 }
                 else{
-                    console.log('no text')
+                    ShowAlert('Empty Resume Text','red')
                 }
-      
             }
             else{
                 const file=document.getElementById('job-input').files[0]

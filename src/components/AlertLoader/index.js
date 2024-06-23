@@ -1,11 +1,11 @@
-export function activate_loader(bool_value){
+export function ActivateLoader(bool_value){
     document.getElementById('loader-box').style.display=bool_value?'flex':'none';
     document.getElementById('blur-box').style.display=bool_value?'flex':'none';
 }
-export function showAlert(message, type) {
+export function ShowAlert(message, type) {
     const alertContainer = document.getElementById('alert-container');
     const alert = document.createElement('div');
-    alert.className = `alert ${type}`;
+    alert.className = `bg-${type}-500 m-1 p-2 rounded-md`;
     alert.innerText = message;
     alertContainer.appendChild(alert);
     setTimeout(() => {
@@ -15,5 +15,4 @@ export function showAlert(message, type) {
         }, 500);
     }, 3000);
 }
-export {NewLoader} from './NewLoader'
-export default {activate_loader,showAlert}
+export default {ActivateLoader,ShowAlert}
