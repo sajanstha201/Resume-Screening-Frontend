@@ -4,6 +4,7 @@ import { Document, Page } from 'react-pdf';
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
+import { ShowAlert } from "../AlertLoader";
 
 GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
@@ -40,6 +41,7 @@ export const JobDescription=({jobDescriptionDetail,setJobDescriptionDetail})=>{
             setJobDescriptionDetail(fullText)
         }
         catch(error){
+            ShowAlert(error,'red')
             console.log(error)
         }
         finally{

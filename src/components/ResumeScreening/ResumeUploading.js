@@ -9,8 +9,19 @@ GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
     const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(true);
+    const isDuplicateFile=(file)=>{
+        Object.keys(resumeDetail).forEach((key)=>{
+            if(key===file.name){
+                ShowAlert('Duplicate File Name: '+file.name,'red')
+                return true
+            }
+        })
+        return false
+    }
     const UploadResumeDetail=()=>{
         try{
+            ActivateLoader(true)
+            console.log('uploading the resume')
             if(!isUploadOptionActivate){
                 const now = new Date();
                 const year = now.getFullYear();
@@ -29,33 +40,39 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                 }
             }
             else{
-                const file=document.getElementById('job-input').files[0]
-                const reader=new FileReader();
-                let fullText=''
-                reader.onload=async (event)=>{
-                    if(file.name.endsWith('.doc')||file.name.endsWith('.docx')){
-                        const doc=await mammoth.extractRawText({arrayBuffer:event.target.result})
-                        fullText=doc.value
-                    }
-                    else if(file.name.endsWith('.pdf')){
-                        const pdf = await getDocument({ data: event.target.result }).promise;
-                        for (let i = 1; i <= pdf.numPages; i++) {
-                            const page = await pdf.getPage(i);
-                            const textContent = await page.getTextContent();
-                            textContent.items.forEach(item => {
-                                fullText += item.str + ' ';
-                            });
+                const resumeFiles=Array.from(document.getElementById('resume-input').files);
+                resumeFiles.forEach((file)=>{
+                    if(!isDuplicateFile(file)){
+                        const reader=new FileReader();
+                        let fullText=''
+                        reader.onload=async (event)=>{
+                            let fullText=''
+                            if(file.name.endsWith('.doc')||file.name.endsWith('.docx')){
+                                const doc=await mammoth.extractRawText({arrayBuffer:event.target.result})
+                                fullText=doc.value
+                            }
+                            else if(file.name.endsWith('.pdf')){
+                                const pdf = await getDocument({ data: event.target.result }).promise;
+                                for (let i = 1; i <= pdf.numPages; i++) {
+                                    const page = await pdf.getPage(i);
+                                    const textContent = await page.getTextContent();
+                                    textContent.items.forEach(item => {
+                                        fullText += item.str + ' ';
+                                    });
+                                }
+                            }
+                            setResumeDetail(prevData=>({...prevData,[file.name]:fullText}))
                         }
+                        reader.readAsArrayBuffer(file)
                     }
-                }
-                reader.readAsArrayBuffer(file)
+                })
             }
         }
         catch(error){
             console.log(error)
         }
         finally{
-            console.log('reseume detail from state',resumeDetail)
+            ActivateLoader(false)
         }
     }
     return(
