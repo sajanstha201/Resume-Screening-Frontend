@@ -3,8 +3,9 @@ import { ShowAlert } from "../AlertLoader";
 export const UploadedResume=({resumeDetail,setResumeDetail,requestPosting})=>{
     const deleteData=(e)=>{
         const key=e.target.nextSibling.innerHTML;
-        console.log(resumeDetail)
-        console.log('value of ',Object.valueOf())
+        const oldList={...resumeDetail};
+        delete oldList[key];
+        setResumeDetail(oldList)
     }
     const removeAll=()=>{
         ShowAlert('Removed All','red');

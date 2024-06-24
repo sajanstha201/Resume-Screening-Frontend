@@ -9,7 +9,7 @@ GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 
 export const JobDescription=({jobDescriptionDetail,setJobDescriptionDetail})=>{
-    const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(true)
+    const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(false)
     const UploadJobDescription=()=>{
         try{
             let fullText=''
