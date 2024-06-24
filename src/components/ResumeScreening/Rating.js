@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export const Rating=({rating,setRating})=>{
     return(
         <div className="h-[50vh] flex flex-col items-center m-5">

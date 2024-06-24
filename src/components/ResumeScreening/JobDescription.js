@@ -1,6 +1,5 @@
 import mammoth from "mammoth"
 import { useState } from "react"
-import { Document, Page } from 'react-pdf';
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";

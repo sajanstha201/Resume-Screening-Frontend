@@ -44,7 +44,6 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                 resumeFiles.forEach((file)=>{
                     if(!isDuplicateFile(file)){
                         const reader=new FileReader();
-                        let fullText=''
                         reader.onload=async (event)=>{
                             let fullText=''
                             if(file.name.endsWith('.doc')||file.name.endsWith('.docx')){
