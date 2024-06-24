@@ -3,14 +3,25 @@ import mammoth from "mammoth"
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-
+import {ShowAlert,ActivateLoader} from '../AlertLoader/index'
 GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 
 export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
     const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(true);
+    const isDuplicateFile=(file)=>{
+        Object.keys(resumeDetail).forEach((key)=>{
+            if(key===file.name){
+                ShowAlert('Duplicate File Name: '+file.name,'red')
+                return true
+            }
+        })
+        return false
+    }
     const UploadResumeDetail=()=>{
         try{
+            ActivateLoader(true)
+            console.log('uploading the resume')
             if(!isUploadOptionActivate){
                 const now = new Date();
                 const year = now.getFullYear();
@@ -25,42 +36,46 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                     setResumeDetail(prevData=>({...prevData,['Resume No'+formattedDateTime]:resumeText}))
                 }
                 else{
-                    console.log('no text')
+                    ShowAlert('Empty Resume Text','red')
                 }
-      
             }
             else{
-                const file=document.getElementById('job-input').files[0]
-                const reader=new FileReader();
-                let fullText=''
-                reader.onload=async (event)=>{
-                    if(file.name.endsWith('.doc')||file.name.endsWith('.docx')){
-                        const doc=await mammoth.extractRawText({arrayBuffer:event.target.result})
-                        fullText=doc.value
-                    }
-                    else if(file.name.endsWith('.pdf')){
-                        const pdf = await getDocument({ data: event.target.result }).promise;
-                        for (let i = 1; i <= pdf.numPages; i++) {
-                            const page = await pdf.getPage(i);
-                            const textContent = await page.getTextContent();
-                            textContent.items.forEach(item => {
-                                fullText += item.str + ' ';
-                            });
+                const resumeFiles=Array.from(document.getElementById('resume-input').files);
+                resumeFiles.forEach((file)=>{
+                    if(!isDuplicateFile(file)){
+                        const reader=new FileReader();
+                        reader.onload=async (event)=>{
+                            let fullText=''
+                            if(file.name.endsWith('.doc')||file.name.endsWith('.docx')){
+                                const doc=await mammoth.extractRawText({arrayBuffer:event.target.result})
+                                fullText=doc.value
+                            }
+                            else if(file.name.endsWith('.pdf')){
+                                const pdf = await getDocument({ data: event.target.result }).promise;
+                                for (let i = 1; i <= pdf.numPages; i++) {
+                                    const page = await pdf.getPage(i);
+                                    const textContent = await page.getTextContent();
+                                    textContent.items.forEach(item => {
+                                        fullText += item.str + ' ';
+                                    });
+                                }
+                            }
+                            setResumeDetail(prevData=>({...prevData,[file.name]:fullText}))
                         }
+                        reader.readAsArrayBuffer(file)
                     }
-                }
-                reader.readAsArrayBuffer(file)
+                })
             }
         }
         catch(error){
             console.log(error)
         }
         finally{
-            console.log('reseume detail from state',resumeDetail)
+            ActivateLoader(false)
         }
     }
     return(
-        <div className='h-[40%] flex shadow-md flex-col items-center justify-center'>
+        <div className='h-[40%] flex  flex-col items-center justify-center relative'>
             <h1>This is resume uploading section</h1>
             <div className="h-[60%] w-[40%] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
@@ -73,7 +88,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                 <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past resume</div>
                 </>}
             </div>
-            <button  className={`${isUploadOptionActivate?'hidden':''} w-28 h-10 mt-2 bg-green-500 rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
+            <button  className={`${isUploadOptionActivate?'hidden':''} absolute bottom-0 w-28 h-10 mt-2 bg-green-500 rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
         </div>
     )
 }
