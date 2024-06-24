@@ -48,8 +48,8 @@ export const JobDescription=({jobDescriptionDetail,setJobDescriptionDetail})=>{
         }
     }
     return(
-        <div className='h-full flex flex-col items-center justify-center w-[40%] shadow-md '>
-            <h1>Job Description</h1>
+        <div className='h-full flex flex-col items-center justify-center w-[40%]  '>
+            <h1 className="text-[20px] m-5">Job Description</h1>
             <div className="h-[60%] w-[80%] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
                     <textarea id='job-text' className="h-[90%] w-[90%] rounded-md focus:outline-none bg-gray-100" placeholder="Type or Copy Paste Job Description here" onChange={UploadJobDescription}></textarea>

@@ -11,7 +11,7 @@ export const UploadedResume=({resumeDetail,setResumeDetail,requestPosting})=>{
         setResumeDetail({});
     }
     return(
-        <div className='h-[60%] flex flex-col shadow-md items-center justify-center '>
+        <div className='h-[60%] flex flex-col  items-center justify-center '>
                 <h2>This is uploaded resume section</h2>
                 <div className="h-[70%] w-[80%] flex flex-wrap overflow-auto border border-2 border-black rounded-md p-5 cursor-pointer">
                     {Object.keys(resumeDetail).map((key)=>(

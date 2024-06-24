@@ -75,7 +75,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
         }
     }
     return(
-        <div className='h-[40%] flex shadow-md flex-col items-center justify-center'>
+        <div className='h-[40%] flex  flex-col items-center justify-center relative'>
             <h1>This is resume uploading section</h1>
             <div className="h-[60%] w-[40%] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
@@ -88,7 +88,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                 <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past resume</div>
                 </>}
             </div>
-            <button  className={`${isUploadOptionActivate?'hidden':''} w-28 h-10 mt-2 bg-green-500 rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
+            <button  className={`${isUploadOptionActivate?'hidden':''} absolute bottom-0 w-28 h-10 mt-2 bg-green-500 rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
         </div>
     )
 }
