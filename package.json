@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
     "docx": "^8.5.0",
     "mammoth": "^1.8.0",
     "pdfjs-dist": "^4.3.136",

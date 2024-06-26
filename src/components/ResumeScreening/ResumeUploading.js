@@ -76,19 +76,19 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
     }
     return(
         <div className='h-[40%] flex  flex-col items-center justify-center relative'>
-            <h1>This is resume uploading section</h1>
-            <div className="h-[60%] w-[40%] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
+            <h1>Upload Resume</h1>
+            <div className="h-[60%] w-[40%] bg-[#adcbe3] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
-                    <textarea id='resume-text' className="h-[90%] w-[90%] rounded-md focus:outline-none bg-gray-100" placeholder="Type or Copy Paste Resume here" ></textarea>
-                    <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(true)}}>upload resume</div>
+                    <textarea id='resume-text' className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none bg-gray-100" placeholder="Type or Copy Paste Resume here" ></textarea>
+                    <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(true)}}>upload</div>
                 </>}
                 {isUploadOptionActivate&&<> 
-                <label htmlFor='resume-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Resume</span><span>as .pdf or .docx file</span> </label>
+                <label htmlFor='resume-input' className=" h-[40%] bg-[#dfe3ee] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Resume</span><span>as .pdf or .docx file</span> </label>
                 <input id='resume-input' type='file' accept='.pdf,.doc,.docx' className="hidden" onChange={UploadResumeDetail} multiple></input>
-                <div className="absolute bottom-1" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past resume</div>
+                <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past</div>
                 </>}
             </div>
-            <button  className={`${isUploadOptionActivate?'hidden':''} absolute bottom-0 w-28 h-10 mt-2 bg-green-500 rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
+            <button  className={`${isUploadOptionActivate?'hidden':''} absolute bottom-0 w-28 h-10 mt-2 bg-[#d4edda] rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>
         </div>
     )
 }

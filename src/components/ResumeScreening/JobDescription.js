@@ -9,7 +9,7 @@ GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 
 export const JobDescription=({jobDescriptionDetail,setJobDescriptionDetail})=>{
-    const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(true)
+    const [isUploadOptionActivate,setIsUploadOptionActivate]=useState(false)
     const UploadJobDescription=()=>{
         try{
             let fullText=''
@@ -49,22 +49,22 @@ export const JobDescription=({jobDescriptionDetail,setJobDescriptionDetail})=>{
     }
     return(
         <div className='h-full flex flex-col items-center justify-center w-[40%]  '>
-            <h1 className="text-[20px] m-5">Job Description</h1>
-            <div className="h-[60%] w-[80%] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
+            <h1 >Job Description</h1>
+            <div className="h-[60%] w-[80%] bg-[#adcbe3] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
-                    <textarea id='job-text' className="h-[90%] w-[90%] rounded-md focus:outline-none bg-gray-100" placeholder="Type or Copy Paste Job Description here" onChange={UploadJobDescription}></textarea>
-                    <div className="absolute bottom-1" onClick={()=>{
+                    <textarea id='job-text' className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none " placeholder="Type or Copy Paste Job Description here" onChange={UploadJobDescription}></textarea>
+                    <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{
                         setIsUploadOptionActivate(true);
                         document.getElementById('job-text').value='';
-                        }}>upload job description</div>
+                        }}>upload</div>
                 </>}
                 {isUploadOptionActivate&&<> 
-                <label htmlFor='job-input' className=" h-[40%] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Job Description</span><span>as .pdf or .docx file</span> </label>
+                <label htmlFor='job-input' className=" h-[40%] border bg-[#dfe3ee] border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Job Description</span><span>as .pdf or .docx file</span> </label>
                 <input id='job-input' type='file' accept=".pdf,.docx" className="hidden" onChange={UploadJobDescription}></input>
-                <div className="absolute bottom-1" onClick={()=>{
+                <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{
                     setIsUploadOptionActivate(false);
                     document.getElementById('job-input').value='';
-                    }}>copy past job description</div>
+                    }}>copy past</div>
                 </>}
 
             </div>
