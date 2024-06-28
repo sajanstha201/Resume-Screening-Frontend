@@ -34,6 +34,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                 const resumeText=document.getElementById('resume-text').value.trim()
                 if(resumeText){
                     setResumeDetail(prevData=>({...prevData,['Resume No'+formattedDateTime]:resumeText}))
+                    document.getElementById('resume-text').value=''
                 }
                 else{
                     ShowAlert('Empty Resume Text','red')
@@ -72,6 +73,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
         }
         finally{
             ActivateLoader(false)
+            console.log(resumeDetail)
         }
     }
     return(
@@ -79,7 +81,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
             <h1>Upload Resume</h1>
             <div className="h-[60%] w-[40%] bg-[#adcbe3] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
                 {!isUploadOptionActivate&&<>
-                    <textarea id='resume-text' className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none bg-gray-100" placeholder="Type or Copy Paste Resume here" ></textarea>
+                    <textarea id='resume-text' className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none " placeholder="Type or Copy Paste Resume here" ></textarea>
                     <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(true)}}>upload</div>
                 </>}
                 {isUploadOptionActivate&&<> 

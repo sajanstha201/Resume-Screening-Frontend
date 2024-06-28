@@ -1,6 +1,6 @@
 import { ShowAlert } from "../AlertLoader";
 
-export const UploadedResume=({resumeDetail,setResumeDetail,requestPosting})=>{
+export const UploadedResume=({setRating,resumeDetail,setResumeDetail,requestPosting})=>{
     const deleteData=(e)=>{
         const key=e.target.nextSibling.innerHTML;
         const oldList={...resumeDetail};
@@ -10,6 +10,7 @@ export const UploadedResume=({resumeDetail,setResumeDetail,requestPosting})=>{
     const removeAll=()=>{
         ShowAlert('Removed All','red');
         setResumeDetail({});
+        setRating([]);
     }
     return(
         <div className='h-[60%] flex flex-col  items-center justify-center '>
