@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {JobDescription,ResumeUploading,UploadedResume,Rating} from '../components/ResumeScreening'
-import { ShowAlert } from '../components/AlertLoader'
+import { ActivateLoader, ShowAlert } from '../components/AlertLoader'
 import axios from 'axios'
 export const ResumeScreening=()=>{
     const [jobDescriptionDetail,setJobDescriptionDetail]=useState('')
@@ -18,15 +18,12 @@ export const ResumeScreening=()=>{
     }
     const requestPosting=async()=>{
         try{
+            ActivateLoader(true)
+            if(jobDescriptionDetail===''){
+                ShowAlert('Empty Job Description','red')
+                return
+            }
             const csrfToken = await requestToken();
-            console.log(csrfToken)
-            const response = await axios.post(
-                'http://127.0.0.1:8000/response/',
-                { name: 'sajan shrestha' },
-                {headers:{'X-CSRFToken': csrfToken}}
-                
-            );
-            /*
             const response = await axios.post(
                 'http://127.0.0.1:8000/get-rating/?format=json',
                 {
@@ -40,11 +37,14 @@ export const ResumeScreening=()=>{
                     },
                 }
             );
-            setRating(response.data)*/
+            setRating(response.data)
             }
         catch(error){
             ShowAlert(error,'red')
             console.log(error)
+        }
+        finally{
+            ActivateLoader(false)
         }
     }
     return(
@@ -53,10 +53,10 @@ export const ResumeScreening=()=>{
                 <JobDescription jobDescriptionDetail={jobDescriptionDetail} setJobDescriptionDetail={setJobDescriptionDetail}/>
                 <div className='h-full flex flex-col w-[60%] '>
                     <ResumeUploading resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}/>
-                    {Object.keys(resumeDetail).length!==0&&<UploadedResume resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}  requestPosting={requestPosting}/>}
+                    {Object.keys(resumeDetail).length!==0&&<UploadedResume setRating={setRating} resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}  requestPosting={requestPosting}/>}
                 </div>
             </div>
-            {Object.keys(rating).length===0&&<Rating rating={rating} setRating={setRating} />}
+            {Object.keys(rating).length!==0&&<Rating rating={rating} setRating={setRating} />}
         </div>
     )
 }
