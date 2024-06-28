@@ -18,8 +18,8 @@ export const UploadedResume=({setRating,resumeDetail,setResumeDetail,requestPost
                 <div className="h-[70%] w-[80%] flex flex-wrap overflow-auto border border-2 border-black rounded-md p-5 cursor-pointer">
                     {Object.keys(resumeDetail).map((key)=>(
                         <>
-                        <div  className="flex items-center justify-center border border-black w-[80px] h-[100px] rounded-xl m-2 relative bg-[#8b9dc3] ">
-                        <div onClick={deleteData}className="bg-red-600 w-[11px] h-[11px] rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border border-black border-1 hover:w-[12px] hover:h-[12px]">x</div>
+                        <div  className="flex items-center justify-center border shadow-lg w-[80px] h-[100px] rounded-md m-2 relative bg-[#8b9dc3] ">
+                        <div onClick={deleteData} className="bg-red-400 pt-1 text-[8px] w-[12px] h-[12px] cursor-pointer rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border border-black border-2 ">x</div>
                                 <p className="m-2 w-[80%] h-[80%] overflow-hidden text-sm">{key}</p>
                         </div>
                         </>

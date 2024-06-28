@@ -8,7 +8,6 @@ export const Rating = ({ rating, setRating }) => {
         try{
             console.log("downloaing excel file")
             ActivateLoader(true)
-                
                 const dataArray=Object.keys(rating).map(key=>[key,rating[key]])
                 const worksheet=XLSX.utils.aoa_to_sheet(dataArray)
                 console.log('worksheet',worksheet)
