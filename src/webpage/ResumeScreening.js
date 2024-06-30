@@ -8,7 +8,7 @@ export const ResumeScreening=()=>{
     const [rating,setRating]=useState([])
     const requestToken=async()=>{
         try{
-            const response=await axios.get('http://127.0.0.1:8000/get-token/')
+            const response=await axios.get('http://sajanstha20155.pythonanywhere.com/get-token/')
             return response.data.token
         }
         catch(error){
@@ -23,9 +23,8 @@ export const ResumeScreening=()=>{
                 ShowAlert('Empty Job Description','red')
                 return
             }
-            const csrfToken = await requestToken();
             const response = await axios.post(
-                'http://127.0.0.1:8000/get-rating/?format=json',
+                'http://sajanstha20155.pythonanywhere.com/get-rating/',
                 {
                     job_description: jobDescriptionDetail,
                     resume_detail: resumeDetail,
@@ -33,7 +32,6 @@ export const ResumeScreening=()=>{
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken,
                     },
                 }
             );
