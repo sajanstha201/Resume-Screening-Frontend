@@ -24,7 +24,7 @@ export const ResumeScreening=()=>{
                 return
             }
             const response = await axios.post(
-                'http://sajanstha20155.pythonanywhere.com/get-rating/',
+                'https://sajanstha20155.pythonanywhere.com/get-rating/',
                 {
                     job_description: jobDescriptionDetail,
                     resume_detail: resumeDetail,
