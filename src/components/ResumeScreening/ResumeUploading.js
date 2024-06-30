@@ -76,6 +76,20 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
             console.log(resumeDetail)
         }
     }
+    const handleDragOver = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+    
+      const handleDrop = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+          document.getElementById('resume-input').files = files;
+          UploadResumeDetail();
+        }
+      };
     return(
         <div className='h-[40%] flex  flex-col items-center justify-center relative'>
             <h1>Upload Resume</h1>
@@ -85,7 +99,14 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                     <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(true)}}>upload</div>
                 </>}
                 {isUploadOptionActivate&&<> 
-                <label htmlFor='resume-input' className=" h-[40%] bg-[#dfe3ee] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"><span>Upload or Drop Resume</span><span>as .pdf or .docx file</span> </label>
+                <label 
+                    htmlFor='resume-input' 
+                    className=" h-[40%] bg-[#dfe3ee] border border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}>
+                    <span>Upload or Drop Resume</span>
+                    <span>as .pdf or .docx file</span>
+                 </label>
                 <input id='resume-input' type='file' accept='.pdf,.doc,.docx' className="hidden" onChange={UploadResumeDetail} multiple></input>
                 <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past</div>
                 </>}
