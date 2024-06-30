@@ -1,6 +1,6 @@
 import './App.css';
-import { ResumeScreening } from './webpage';
-
+import { Home, ResumeScreening } from './webpage';
+import {HashRouter,Routes,Route} from 'react-router-dom'
 function App() {
   return (
     <div className='relative bg-[#E7eff6]'>
@@ -8,7 +8,12 @@ function App() {
         <div className='blur-box' id='blur-box'>
           <div className='loader-box' id='loader-box'></div>      
         </div>
-        <ResumeScreening/>
+        <HashRouter>
+          <Routes>
+            <Route path={'/'} element={<Home/>}/>
+            <Route path={'/resume-screening'} element={<ResumeScreening/>}/>
+          </Routes>
+        </HashRouter>
     </div>
   );
 }
