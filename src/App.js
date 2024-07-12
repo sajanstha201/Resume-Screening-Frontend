@@ -10,8 +10,7 @@ function App() {
         </div>
         <HashRouter>
           <Routes>
-            <Route path={'/'} element={<Home/>}/>
-            <Route path={'/resume-screening'} element={<ResumeScreening/>}/>
+            <Route path={'/'} element={<ResumeScreening/>}/>
           </Routes>
         </HashRouter>
     </div>

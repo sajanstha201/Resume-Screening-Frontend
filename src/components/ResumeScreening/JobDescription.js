@@ -67,9 +67,9 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
   };
 
   return (
-    <div className='h-full flex flex-col items-center justify-center w-[40%]'>
+    <div className='h-full flex flex-col items-center justify-center w-full'>
       <h1>Job Description</h1>
-      <div className={`${file.length === 0 ? 'border-dotted border-black bg-[#adcbe3] shadow-lg' : 'bg-[#8b9dc3]'} h-[50%] w-[70%] border rounded-lg flex flex-col justify-center items-center relative`}>
+      <div className={`${file.length === 0 ? 'border-dotted border-black  bg-[#adcbe3] shadow-lg' : 'bg-[#8b9dc3]'} h-[90%] w-[60%] border rounded-lg flex flex-col justify-center items-center relative`}>
         {isUploadOptionActivate ? (
           <>
             {file.length !== 0 ? (

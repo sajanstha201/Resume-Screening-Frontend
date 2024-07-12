@@ -95,13 +95,13 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
         }
       };
     return(
-        <div className='h-[40%] flex  flex-col items-center justify-center relative'>
+        <div className='h-full flex  flex-col items-center justify-center relative'>
             <h1>Upload Resume</h1>
-            <div className="h-[60%] w-[40%] bg-[#adcbe3] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
-                {!isUploadOptionActivate&&<>
+            <div className="h-[90%] w-[60%] bg-[#adcbe3] border border-black border-dotted rounded-md flex flex-col justify-center items-center relative">
+                {/* {!isUploadOptionActivate&&<>
                     <textarea id='resume-text' className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none " placeholder="Type or Copy Paste Resume here" ></textarea>
                     <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(true)}}>upload</div>
-                </>}
+                </>} */}
                 {isUploadOptionActivate&&<> 
                 <label 
                     htmlFor='resume-input' 
@@ -112,7 +112,7 @@ export const ResumeUploading=({resumeDetail,setResumeDetail})=>{
                     <span>as .pdf or .docx file</span>
                  </label>
                 <input id='resume-input' type='file' accept='.pdf,.doc,.docx' className="hidden" onChange={UploadResumeDetail} multiple></input>
-                <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past</div>
+                {/* <div className="absolute bottom-1 bg-white px-1 rounded-md" onClick={()=>{setIsUploadOptionActivate(false)}}>copy past</div> */}
                 </>}
             </div>
             <button  className={`${isUploadOptionActivate?'hidden':''} absolute bottom-0 w-28 h-10 mt-2 bg-[#d4edda] rounded-md border-2 border border-black shadow-sm`} onClick={UploadResumeDetail}>Add</button>

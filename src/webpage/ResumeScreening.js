@@ -47,14 +47,26 @@ export const ResumeScreening=()=>{
     }
     return(
         <div className=''>
-            <div className="h-[80vh]  flex flex-row ">
-                <JobDescription jobDescriptionDetail={jobDescriptionDetail} setJobDescriptionDetail={setJobDescriptionDetail}/>
-                <div className='h-full flex flex-col w-[60%] '>
+            <div className='h-screen flex flex-col'>
+                <div className='w-full h-[40%] flex flex-row'>
+                    <div className='w-[50%] h-full '>
+                    <JobDescription jobDescriptionDetail={jobDescriptionDetail} setJobDescriptionDetail={setJobDescriptionDetail}/>
+                    </div>
+                    <div className='w-[50%] h-full '>
                     <ResumeUploading resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}/>
-                    {Object.keys(resumeDetail).length!==0&&<UploadedResume setRating={setRating} resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}  requestPosting={requestPosting}/>}
+                    </div>
+                </div>
+                <div className='w-full h-[60%] flex flex-row'>
+                    <div className='w-[50%] h-full '>
+                        {Object.keys(resumeDetail).length!==0&&<UploadedResume setRating={setRating} resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}  requestPosting={requestPosting}/>}
+
+                    </div >
+                    <div className='w-[50%] h-full '>
+                        {Object.keys(rating).length!==0&&<Rating rating={rating} setRating={setRating} />}
+
+                    </div>
                 </div>
             </div>
-            {Object.keys(rating).length!==0&&<Rating rating={rating} setRating={setRating} />}
         </div>
     )
 }

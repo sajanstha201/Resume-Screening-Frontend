@@ -28,12 +28,9 @@ export const Rating = ({ rating, setRating }) => {
             }
     }
     return (
-        <div className="h-[80vh] flex flex-col items-center m-5 mb-24">
+        <div className="h-full flex flex-col items-center  justify-center">
             <h1>Resume Rating</h1>
-            <button className="w-28 h-10 bg-[#a7d4b2] rounded-md border-2 border-black shadow-sm" onClick={downloadExcel}>
-                Download
-            </button>
-            <div className="h-[100%] overflow-auto mt-5 w-[90%]">
+            <div className="h-[70%] overflow-auto  w-[90%]">
                 <table className="w-full text-center" style={{ border: '1px solid #ddd' }}>
                     <thead>
                         <tr className="bg-[#f2f2f2]" style={{ border: '1px solid #dddddd', position: 'sticky', top: 0, zIndex: 1 }}>
@@ -59,6 +56,9 @@ export const Rating = ({ rating, setRating }) => {
                     </tbody>
                 </table>
             </div>
+            <button className="w-28 h-10 m-2 bg-[#a7d4b2] rounded-md border-2 border-black shadow-sm" onClick={downloadExcel}>
+                Download
+            </button>
         </div>
     );
 };
