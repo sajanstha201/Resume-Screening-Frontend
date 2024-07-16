@@ -5,6 +5,7 @@ import { ActivateLoader, ShowAlert } from "../AlertLoader";
 import * as XLSX from 'xlsx'
 import { CircularProgress } from "./CircularProgress";
 import { StarRating } from "./StarRating";
+
 export const Rating = ({ rating, setRating }) => {
     const downloadExcel= async()=>{
         try{
@@ -43,12 +44,12 @@ export const Rating = ({ rating, setRating }) => {
                     <tbody>
                         {Object.entries(rating).map((entries, index) => (
                             <tr key={entries[0]} className={`${index % 2 === 0 ? '' : 'bg-gray-100'}`} style={{ border: '1px solid #dddddd' }}>
-                                <td className="p-4" style={{ border: '1px solid #dddddd' }}>{entries[0]}</td>
-                                <td className="p-4" style={{ border: '1px solid #dddddd' }}>{entries[1]/10}/10</td>
-                                <td className="p-4 flex justify-center items-center h-full" >
+                                <td className="p-1 max-w-[200px] overflow-hidden" style={{ border: '1px solid #dddddd' }}>{entries[0]}</td>
+                                <td className="p-1" style={{ border: '1px solid #dddddd' }}>{entries[1]/10}/10</td>
+                                <td className="p-1 flex justify-center items-center h-full" >
                                     <StarRating value={entries[1]/10}/>
                                 </td>
-                                <td className="p-4" style={{ border: '1px solid #dddddd' }}>
+                                <td className="p-1" style={{ border: '1px solid #dddddd' }}>
                                     <CircularProgress percentage={entries[1]}/>
                                 </td>
                             </tr>
@@ -56,7 +57,7 @@ export const Rating = ({ rating, setRating }) => {
                     </tbody>
                 </table>
             </div>
-            <button className="w-28 h-10 m-2 bg-[#a7d4b2] rounded-md border-2 border-black shadow-sm" onClick={downloadExcel}>
+            <button className="w-28 h-10 m-2 bg-[#008000] rounded-md text-white shadow-sm" onClick={downloadExcel}>
                 Download
             </button>
         </div>

@@ -31,16 +31,16 @@ export const UploadedResume=({setRating,resumeDetail,setResumeDetail,requestPost
                             {Object.keys(resumeDetail).map((key,index) => (
                                 <tr  className={`${index % 2 === 0 ? '' : 'bg-gray-100'}`} style={{ border: '1px solid #dddddd' }}>
                                     <td className="p-4">{index+1}</td>
-                                    <td className="p-4" >{key}</td>
-                                    <td className="p-4"><FontAwesomeIcon icon={faTrash} onClick={deleteData} className="transform hover:scale-125 "/></td>
+                                    <td className="p-4 max-w-[400px] overflow-hidden" >{key}</td>
+                                    <td className="p-4"><FontAwesomeIcon icon={faTrash} onClick={deleteData} className="transform hover:scale-125 hover:text-red-600"/></td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
                 <div className="flex gap-2 m-2">
-                    <button  className="w-28 h-10 bg-[#ff8c00] rounded-md border-2  border-black shadow-sm" onClick={removeAll}>Remove All</button>
-                    <button  className="w-28 h-10 bg-[#bfd6f6] rounded-md border-2  border-black shadow-sm" onClick={requestPosting}>Submit</button>
+                    <button  className="w-28 h-10 bg-[#dc3545] text-white rounded-md shadow-sm" onClick={removeAll}>Remove All</button>
+                    <button  className="w-28 h-10 bg-[#0d6efd] text-white rounded-md  shadow-sm" onClick={requestPosting}>Submit</button>
                 </div>
 
 
