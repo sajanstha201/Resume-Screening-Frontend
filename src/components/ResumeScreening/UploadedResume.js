@@ -2,63 +2,64 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShowAlert } from "../AlertLoader";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export const UploadedResume=({setRating,resumeDetail,setResumeDetail,requestPosting})=>{
-    const deleteData=(e)=>{
-        const key=e.target.closest('td').previousSibling.innerHTML;
-        const oldList={...resumeDetail};
-        delete oldList[key];
-        setResumeDetail(oldList)
-        ShowAlert('Deleted:'+key,'red')
-    }
-    const removeAll=()=>{
-        ShowAlert('Removed All','red');
-        setResumeDetail({});
-        setRating([]);
-    }
-    return(
-        <div className='h-full flex flex-col  items-center justify-center '>
-                <h1>Uploaded Resume</h1>
-                <div className="h-[70%] w-[90%] overflow-auto">
-                    <table className="w-full text-center" style={{ border: '1px solid #ddd' }}>
-                        <thead>
-                            <tr className="bg-[#f2f2f2]" style={{ border: '1px solid #dddddd', position: 'sticky', top: 0, zIndex: 1 }}>
-                                <th>SN</th>
-                                <th className="p-4" style={{ backgroundColor: '#f2f2f2' }}>Resume Name</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.keys(resumeDetail).map((key,index) => (
-                                <tr  className={`${index % 2 === 0 ? '' : 'bg-gray-100'}`} style={{ border: '1px solid #dddddd' }}>
-                                    <td className="p-4">{index+1}</td>
-                                    <td className="p-4 max-w-[400px] overflow-hidden" >{key}</td>
-                                    <td className="p-4"><FontAwesomeIcon icon={faTrash} onClick={deleteData} className="transform hover:scale-125 hover:text-red-600"/></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-                <div className="flex gap-2 m-2">
-                    <button  className="w-28 h-10 bg-[#dc3545] text-white rounded-md shadow-sm" onClick={removeAll}>Remove All</button>
-                    <button  className="w-28 h-10 bg-[#0d6efd] text-white rounded-md  shadow-sm" onClick={requestPosting}>Submit</button>
-                </div>
+export const UploadedResume = ({ setRating, resumeDetail, setResumeDetail, requestPosting }) => {
+  const deleteData = (e) => {
+    const key = e.target.closest('td').previousSibling.innerHTML;
+    const oldList = { ...resumeDetail };
+    delete oldList[key];
+    setResumeDetail(oldList);
+    ShowAlert('Deleted: ' + key, 'red');
+  };
 
+  const removeAll = () => {
+    ShowAlert('Removed All', 'red');
+    setResumeDetail({});
+    setRating([]);
+  };
 
-
-                {/* <div className="h-[70%] w-[80%] flex flex-wrap overflow-auto border border-2 border-black rounded-md p-5 cursor-pointer">
-                    {Object.keys(resumeDetail).map((key)=>(
-                        <>
-                        <div  className="flex items-center justify-center border shadow-lg w-[80px] h-[100px] rounded-md m-2 relative bg-[#8b9dc3] ">
-                        <div onClick={deleteData} className="bg-red-400 pt-1 text-[8px] w-[12px] h-[12px] cursor-pointer rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border border-black border-2 ">x</div>
-                                <p className="m-2 w-[80%] h-[80%] overflow-hidden text-sm">{key}</p>
-                        </div>
-                        </>
-                    ))}
-                </div>
-                <div className="flex gap-2 m-2">
-                    <button  className="w-28 h-10 bg-[#ff8c00] rounded-md border-2 border border-black shadow-sm" onClick={removeAll}>Remove All</button>
-                    <button  className="w-28 h-10 bg-[#bfd6f6] rounded-md border-2 border border-black shadow-sm" onClick={requestPosting}>Submit</button>
-                </div> */}
-        </div>
-    )
-}
+  return (
+    <div className="h-full flex flex-col items-center justify-center">
+      <h1 className="text-2xl font-semibold mb-4">Uploaded Resume</h1>
+      <div className="h-3/5 w-4/5 overflow-auto border border-gray-300 rounded-lg shadow-lg">
+        <table className="w-full text-center">
+          <thead className="bg-gray-200 sticky top-0 z-10">
+            <tr>
+              <th className="py-2 border-b border-gray-300">SN</th>
+              <th className="py-2 border-b border-gray-300">Resume Name</th>
+              <th className="py-2 border-b border-gray-300"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(resumeDetail).map((key, index) => (
+              <tr key={key} className={`${index % 2 === 0 ? '' : 'bg-gray-100'} border-b border-gray-300`}>
+                <td className="py-2 p-1">{index + 1}</td>
+                <td className="py-2 p-1 max-w-[400px] truncate">{key}</td>
+                <td className="pr-4 p-1">
+                  <FontAwesomeIcon 
+                    icon={faTrash} 
+                    onClick={deleteData} 
+                    className="cursor-pointer transform hover:scale-125 hover:text-red-600 transition-transform"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="flex gap-4 mt-4">
+        <button 
+          className="w-28 h-10 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700 transition-colors" 
+          onClick={removeAll}
+        >
+          Remove All
+        </button>
+        <button 
+          className="w-28 h-10 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 transition-colors" 
+          onClick={requestPosting}
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  );
+};

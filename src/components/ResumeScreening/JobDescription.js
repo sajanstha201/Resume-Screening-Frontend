@@ -67,9 +67,9 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
   };
 
   return (
-    <div className='h-full flex flex-col items-center justify-center w-full'>
-      <h1>Job Description</h1>
-      <div className={`${file.length === 0 ? 'border-dotted border-black  bg-[#adcbe3] shadow-lg' : 'bg-[#8b9dc3]'} h-[90%] w-[60%] border rounded-lg flex flex-col justify-center items-center relative`}>
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <h1 className="text-2xl font-semibold mb-4">Job Description</h1>
+      <div className={`border rounded-lg flex flex-col justify-center items-center relative shadow-lg ${file.length === 0 ? 'border-dotted border-black bg-blue-200' : 'bg-blue-400'} h-3/4 w-3/5`}>
         {isUploadOptionActivate ? (
           <>
             {file.length !== 0 ? (
@@ -79,7 +79,7 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
                     setJobDescriptionDetail('');
                     setFile([]);
                   }}
-                  className="bg-red-400 pt-1 text-[8px] w-[15px] h-[15px] cursor-pointer rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border border-black border-2"
+                  className="bg-red-400 text-white text-xs w-4 h-4 cursor-pointer rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border-2 border-black"
                 >
                   x
                 </div>
@@ -88,8 +88,8 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
             ) : (
               <>
                 <label
-                  htmlFor='job-input'
-                  className="h-[40%] border bg-[#dfe3ee] border-black w-[60%] rounded-md flex flex-col items-center justify-center hover:border-2"
+                  htmlFor="job-input"
+                  className="h-2/5 border bg-gray-200 border-black w-3/5 rounded-md flex flex-col items-center justify-center hover:border-2"
                   onDragOver={handleDragOver}
                   onDrop={handleDrop}
                 >
@@ -97,8 +97,8 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
                   <span>as .pdf or .docx file</span>
                 </label>
                 <input
-                  id='job-input'
-                  type='file'
+                  id="job-input"
+                  type="file"
                   accept=".pdf,.docx"
                   className="hidden"
                   onChange={UploadJobDescription}
@@ -118,8 +118,8 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
         ) : (
           <>
             <textarea
-              id='job-text'
-              className="h-[90%] w-[90%] bg-[#adcbe3] rounded-md focus:outline-none"
+              id="job-text"
+              className="h-[90%] w-[90%] bg-blue-200 rounded-md focus:outline-none p-2"
               placeholder="Type or Copy Paste Job Description here"
               onChange={UploadJobDescription}
             ></textarea>

@@ -6,7 +6,7 @@ export function ShowAlert(message, type) {
     const alertContainer = document.getElementById('alert-container');
     const alert = document.createElement('div');
     alert.style.backgroundColor=type;
-    alert.className = `m-1 p-2 rounded-md z-100`;
+    alert.className = `m-1 p-2 rounded-md z-20`;
     alert.innerText = message;
     alertContainer.appendChild(alert);
     setTimeout(() => {
