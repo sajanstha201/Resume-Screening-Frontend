@@ -47,8 +47,8 @@ export const ResumeScreening=()=>{
     }
     return(
         <div className=''>
-            <div className='h-screen flex flex-col'>
-                <div className='w-full h-[30%] flex flex-row'>
+            <div className='flex flex-col'>
+                <div className='w-full h-[30vh] flex flex-row'>
                     <div className='w-[50%] h-full '>
                     <JobDescription jobDescriptionDetail={jobDescriptionDetail} setJobDescriptionDetail={setJobDescriptionDetail}/>
                     </div>
@@ -56,7 +56,7 @@ export const ResumeScreening=()=>{
                     <ResumeUploading resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}/>
                     </div>
                 </div>
-                <div className='w-full h-[70%] flex flex-row'>
+                <div className='w-full  flex flex-row my-5'>
                     <div className='w-[50%] h-full '>
                         {Object.keys(resumeDetail).length!==0&&<UploadedResume setRating={setRating} resumeDetail={resumeDetail} setResumeDetail={setResumeDetail}  requestPosting={requestPosting}/>}
 

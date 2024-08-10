@@ -28,25 +28,27 @@ export const Rating = ({ rating, setRating }) => {
 
     return (
         <div className="h-full flex flex-col items-center justify-center">
-            <h1 className="text-2xl font-semibold mb-4">Resume Rating</h1>
+            <h1 className="text-2xl font-semibold ">Resume Rating</h1>
+            <button className="w-28 h-10 my-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 transition-colors" onClick={downloadExcel}>
+                Download
+            </button>
             <div className="h-3/5 w-4/5 overflow-auto border border-gray-300 rounded-lg shadow-lg">
                 <table className="w-full text-center">
                     <thead className="bg-gray-200 sticky top-0 z-10">
                         <tr>
-                            <th className="p-4 border-b border-gray-300">Resume Name</th>
-                            <th className="p-4 border-b border-gray-300">Rating Score</th>
+                            <th className="p-2 border-b border-gray-300 h-16">Resume Name</th>
+                            <th className="p-2 border-b border-gray-300">Rating Score</th>
                             {/* <th className="p-4 border-b border-gray-300">Rating</th> */}
-                            <th className="p-4 border-b border-gray-300">Percentage Match</th>
+                            <th className="p-2 border-b border-gray-300">Percentage Match</th>
                         </tr>
                     </thead>
                     <tbody>
                         {Object.entries(rating).map((entries, index) => (
                             <tr key={entries[0]} className={`${index % 2 === 0 ? '' : 'bg-gray-100'} border-b border-gray-300`}>
                                 <td className="p-1 max-w-[200px] truncate border border-gray-300">{entries[0]}</td>
-                                <td className="p-1 border border-gray-300">{entries[1] / 10}/10</td>
-                                {/* <td className="p-1 flex justify-center items-center">
-                                    <StarRating value={entries[1] / 10} />
-                                </td> */}
+                                <td className="p-1 border border-gray-300 h-16 ">{entries[1] / 10}/10
+                                <StarRating value={entries[1] / 10} />
+                                </td>
                                 <td className="p-1 border border-gray-300">
                                     <CircularProgress percentage={entries[1]} />
                                 </td>
@@ -55,9 +57,7 @@ export const Rating = ({ rating, setRating }) => {
                     </tbody>
                 </table>
             </div>
-            <button className="w-28 h-10 m-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 transition-colors" onClick={downloadExcel}>
-                Download
-            </button>
+
         </div>
     );
 };
