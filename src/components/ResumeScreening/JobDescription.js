@@ -89,11 +89,11 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
               <>
                 <label
                   htmlFor="job-input"
-                  className="h-2/5 border bg-gray-200 border-black w-3/5 rounded-md flex flex-col items-center justify-center hover:border-2"
+                  className="h-2/5 border bg-gray-200 border-black w-3/5 rounded-md text-[10px]  md:text-md flex flex-col items-center justify-center hover:border-2"
                   onDragOver={handleDragOver}
                   onDrop={handleDrop}
                 >
-                  <span>Upload or Drop Job Description</span>
+                  <p className='w-full flex items-center justify-center text-center'>Upload or Drop Job Description</p>
                   <span>as .pdf or .docx file</span>
                 </label>
                 <input
@@ -104,7 +104,7 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
                   onChange={UploadJobDescription}
                 />
                 <div
-                  className="absolute bottom-1 bg-white px-1 rounded-md cursor-pointer"
+                  className="absolute bottom-1 bg-white px-1 rounded-md cursor-pointer text-[10px] md:text-md"
                   onClick={() => {
                     setIsUploadOptionActivate(false);
                     document.getElementById('job-input').value = '';
