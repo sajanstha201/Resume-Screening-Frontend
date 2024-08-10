@@ -36,7 +36,7 @@ export const UploadedResume = ({ setRating, resumeDetail, setResumeDetail, reque
                 </button>
           </div>
 
-      <div className=" w-4/5 overflow-auto border border-gray-300 rounded-lg shadow-lg">
+      <div className=" w-[95%] overflow-auto border border-gray-300 rounded-lg shadow-lg">
         <table className="w-full text-center">
           <thead className="bg-gray-200 sticky top-0 z-10">
             <tr>
