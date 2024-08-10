@@ -70,6 +70,7 @@ export const ResumeUploading = ({ resumeDetail, setResumeDetail }) => {
               };
               reader.onerror = (error) => reject(error);
               reader.readAsArrayBuffer(file);
+              document.getElementById('resume-input').value = '';
             });
           }
         }
@@ -116,7 +117,7 @@ export const ResumeUploading = ({ resumeDetail, setResumeDetail }) => {
               <span>Upload or Drop Resume</span>
               <span>as .pdf or .docx file</span>
             </label>
-            <input id="resume-input" type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={UploadResumeDetail} multiple />
+            <input id="resume-input" type="file" accept=".pdf,.doc,.docx" className="hi" onChange={UploadResumeDetail} multiple />
           </>
         )}
       </div>

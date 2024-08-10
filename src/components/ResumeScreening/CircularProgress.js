@@ -12,7 +12,7 @@ export const CircularProgress = ({ percentage }) => {
   const strokeDashoffset = calculateStrokeDashoffset(percentage);
   return (
     <div className="relative flex items-center justify-center">
-      <svg className="w-16 h-16" viewBox="0 0 120 120">
+      <svg className="w-12 h-12" viewBox="0 0 120 120">
         <circle
           cx="60"
           cy="60"
@@ -34,7 +34,7 @@ export const CircularProgress = ({ percentage }) => {
           transform="rotate(-90 60 60)"
         />
       </svg>
-      <span className="absolute text-sm font-bold text-gray-800">
+      <span className="absolute text-[10px] font-bold text-gray-800">
         {percentage}%
       </span>
     </div>
