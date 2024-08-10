@@ -71,7 +71,7 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <h1 className="text-2xl font-semibold mb-4">Job Description</h1>
-      <div className={`border rounded-lg flex flex-col justify-center items-center relative shadow-lg ${file.length === 0 ? 'border-dotted border-black bg-blue-200' : 'bg-blue-400'} h-3/4 w-3/5`}>
+      <div className={`border rounded-lg flex flex-col justify-center items-center relative shadow-lg ${file.length === 0 ? 'border-dotted border-black bg-blue-200' : 'bg-blue-400'} h-3/4 w-3/5 overflow-hidden`}>
         {isUploadOptionActivate ? (
           <>
             {file.length !== 0 ? (
