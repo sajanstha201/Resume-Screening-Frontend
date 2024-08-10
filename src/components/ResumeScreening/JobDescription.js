@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import mammoth from 'mammoth';
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 import { ShowAlert } from '../AlertLoader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 // Ensure PDF.js worker is correctly loaded
 GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.mjs`;
 
 export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }) => {
-  const [isUploadOptionActivate, setIsUploadOptionActivate] = useState(false);
+  const [isUploadOptionActivate, setIsUploadOptionActivate] = useState(true);
   const [file, setFile] = useState([]);
 
   const UploadJobDescription = () => {
     try {
       if (!isUploadOptionActivate) {
         // If using text input mode
-        setJobDescriptionDetail(document.getElementById('job-text').value.trim());
+        setJobDescriptionDetail(document.getElementById('job-text').value);
       } else {
         // If uploading a file
         const file = document.getElementById('job-input').files[0];
@@ -74,15 +76,13 @@ export const JobDescription = ({ jobDescriptionDetail, setJobDescriptionDetail }
           <>
             {file.length !== 0 ? (
               <>
-                <div
-                  onClick={() => {
+                  <FontAwesomeIcon icon={faClose} size='2x'
+                   onClick={() => {
                     setJobDescriptionDetail('');
                     setFile([]);
                   }}
-                  className="bg-red-400 text-white text-xs w-4 h-4 cursor-pointer rounded-full right-1 top-1 absolute flex items-center justify-center pb-1 border-2 border-black"
-                >
-                  x
-                </div>
+                  className="text-red-800 cursor-pointer right-1 top-1 absolute flex items-center justify-center "
+                  />
                 {file[0].name}
               </>
             ) : (

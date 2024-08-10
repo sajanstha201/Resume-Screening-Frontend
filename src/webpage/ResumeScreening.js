@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import {JobDescription,ResumeUploading,UploadedResume,Rating} from '../components/ResumeScreening'
 import { ActivateLoader, ShowAlert } from '../components/AlertLoader'
+import {useSelector} from 'react-redux'
 import axios from 'axios'
 export const ResumeScreening=()=>{
     const [jobDescriptionDetail,setJobDescriptionDetail]=useState('')
     const [resumeDetail,setResumeDetail]=useState({})
     const [rating,setRating]=useState([])
+    const baseUrl=useSelector(state=>state.baseUrl).backend
     const requestToken=async()=>{
         try{
-            const response=await axios.get('http://sajanstha20155.pythonanywhere.com/get-token/')
+            const response=await axios.get(baseUrl+'get-token/')
             return response.data.token
         }
         catch(error){
@@ -24,7 +26,7 @@ export const ResumeScreening=()=>{
                 return
             }
             const response = await axios.post(
-                'https://sajanstha20155.pythonanywhere.com/get-rating/',
+                baseUrl+'get-rating/',
                 {
                     job_description: jobDescriptionDetail,
                     resume_detail: resumeDetail,

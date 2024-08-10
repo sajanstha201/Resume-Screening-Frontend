@@ -23,7 +23,6 @@ export const ResumeUploading = ({ resumeDetail, setResumeDetail }) => {
   const UploadResumeDetail = async () => {
     try {
       ActivateLoader(true);
-      console.log('Uploading the resume');
       if (!isUploadOptionActivate) {
         const now = new Date();
         const year = now.getFullYear();

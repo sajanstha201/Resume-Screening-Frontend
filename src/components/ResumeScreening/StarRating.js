@@ -8,7 +8,7 @@ export const StarRating = ({ value }) => {
   const emptyStars = 10 - Math.ceil(value);
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex' }} className='flex items-start justify-center'>
       {Array.from({ length: fullStars }).map((_, i) => (
         <FontAwesomeIcon key={`filled-${i}`} icon={fullStar} style={{ color: 'orange' }} />
       ))}
