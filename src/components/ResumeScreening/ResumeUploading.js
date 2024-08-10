@@ -109,7 +109,7 @@ export const ResumeUploading = ({ resumeDetail, setResumeDetail }) => {
           <>
             <label
               htmlFor="resume-input"
-              className="h-2/5 bg-gray-200 border border-black w-3/5 rounded-md text-[10px] md:text-md flex flex-col items-center justify-center hover:border-2"
+              className="h-2/5 bg-gray-200 border border-black w-3/5 rounded-md text-[10px] md:text-xl flex flex-col items-center justify-center hover:border-2"
               onDragOver={handleDragOver}
               onDrop={handleDrop}
             >
