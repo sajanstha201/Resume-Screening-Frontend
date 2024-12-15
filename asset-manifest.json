@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/resume_screening_react/static/css/main.041de52d.css",
-    "main.js": "/resume_screening_react/static/js/main.7f413e64.js",
-    "static/js/453.2b06451f.chunk.js": "/resume_screening_react/static/js/453.2b06451f.chunk.js",
-    "index.html": "/resume_screening_react/index.html",
-    "main.041de52d.css.map": "/resume_screening_react/static/css/main.041de52d.css.map",
-    "main.7f413e64.js.map": "/resume_screening_react/static/js/main.7f413e64.js.map",
-    "453.2b06451f.chunk.js.map": "/resume_screening_react/static/js/453.2b06451f.chunk.js.map"
+    "main.css": "/Resume-Screening-Frontend/static/css/main.041de52d.css",
+    "main.js": "/Resume-Screening-Frontend/static/js/main.888e431d.js",
+    "static/js/453.2b06451f.chunk.js": "/Resume-Screening-Frontend/static/js/453.2b06451f.chunk.js",
+    "index.html": "/Resume-Screening-Frontend/index.html",
+    "main.041de52d.css.map": "/Resume-Screening-Frontend/static/css/main.041de52d.css.map",
+    "main.888e431d.js.map": "/Resume-Screening-Frontend/static/js/main.888e431d.js.map",
+    "453.2b06451f.chunk.js.map": "/Resume-Screening-Frontend/static/js/453.2b06451f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.041de52d.css",
-    "static/js/main.7f413e64.js"
+    "static/js/main.888e431d.js"
   ]
 }
